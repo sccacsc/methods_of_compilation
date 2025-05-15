@@ -2,6 +2,7 @@
 #define LEXER_H
 
 #include "token.h"
+#include <map>
 
 class Lexer
 {
@@ -29,7 +30,7 @@ private:
         NAME = 1,             // имя
         INTEGER = 2,          // целое число
         REAL = 3,             // вещественное число
-        EQUAL = 4,            // знак равенства ==
+        EQUALS = 4,           // знак равенства ==
         NOT_EQUALS = 5,       // знак сравнения !=
         GREATER_OR_EQUAL = 6, // больше или равно >=
         LESS_OR_EQUAL = 7     // меньше или равно <=
@@ -62,6 +63,8 @@ private:
         {O, O, O, O, O, O, O, O, O, F, O, O, O, O, O, O, O, O, O, O},              // G
         {O, D, O, FF, FF, FF, FF, O, FF, FF, O, O, O, O, FF, FF, FF, FF, O, FF}    // D
     };
+    // таблица служебных слов
+    const std::map<std::string, int> table_encoding;
     // таблица семантических действий
     const int semantic_table[8][20] = {
         {1, 2, 3, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4, 4, 5, 5, 5, 4, 8, 4},              // S
