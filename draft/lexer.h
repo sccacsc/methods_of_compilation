@@ -22,7 +22,6 @@ private:
     float real_num;         // вещественное число
     std::string name;       // строка символов, либо имя
 
-    // просто для красоты
     // типы распознаной лексемы
     enum Type
     {
@@ -52,6 +51,52 @@ private:
         FF, //
         O   //
     };
+
+    // определить столбец
+    int encode_сhar(char ch)
+    {
+        if (ch >= 'A' && ch <= 'Z')
+            return 0; // «б»
+        if (isdigit(ch))
+            return 1; // «ц»
+        if (ch == '.')
+            return 2; //
+        if (ch == '+')
+            return 3; //
+        if (ch == '-')
+            return 4; //
+        if (ch == '*')
+            return 5; //
+        if (ch == '/')
+            return 6; //
+        if (ch == '(')
+            return 7; //
+        if (ch == ')')
+            return 8; //
+        if (ch == '=')
+            return 9; //
+        if (ch == '[')
+            return 10; //
+        if (ch == ']')
+            return 11; //
+        if (ch == '{')
+            return 12; //
+        if (ch == '}')
+            return 13; //
+        if (ch == '>')
+            return 14; //
+        if (ch == '<')
+            return 15; //
+        if (isspace(ch))
+            return 16; //
+        if (ch == '!')
+            return 17; //
+        if (ch == '\n')
+            return 18; //
+        if (ch == ';')
+            return 19; //
+        return -1;
+    }
     // таблица переходов
     const int transition_table[8][20] = {
         {I, C, O, F, F, F, F, F, F, B, F, F, F, F, R, R, S, G, S, F},              // S

@@ -9,6 +9,15 @@ Lexer::Lexer(std::string input) : input_text(input),
 
 Lexer::~Lexer() = default;
 
+Token Lexer::get_next_token()
+{
+    State state = S;
+
+    while (state != F && state != FF && state != O)
+    {
+    }
+}
+
 void Lexer::semantic_program(int num)
 {
     switch (num)
