@@ -3,10 +3,12 @@
 
 #include <string>
 
-struct Token {
+struct Token
+{
     int type;
     std::string value;
-    int line, column;
+    int line;
+    int column;
 };
 
 #endif // TOKEN_H
