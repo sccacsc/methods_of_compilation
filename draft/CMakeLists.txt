@@ -7,7 +7,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(draft main.cpp
     lexer.h
-    token.h)
+    token.h
+    lexer.cpp)
 
 include(GNUInstallDirs)
 install(TARGETS draft
