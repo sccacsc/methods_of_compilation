@@ -5,7 +5,9 @@ project(draft LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-add_executable(draft main.cpp)
+add_executable(draft main.cpp
+    lexer.h
+    token.h)
 
 include(GNUInstallDirs)
 install(TARGETS draft
