@@ -47,6 +47,7 @@ private:
         C,  //
         B,  //
         R,  //
+        L,  //
         G,  //
         D,  //
         F,  //
@@ -59,12 +60,12 @@ private:
 
     // таблица переходов
     const int transition_table[8][21] = {
-        {I, C, O, F, F, F, F, F, F, B, F, F, F, F, R, R, S, G, S, F, F},              // S
+        {I, C, O, F, F, F, F, F, F, B, F, F, F, F, R, L, S, G, S, F, F},              // S
         {I, I, O, FF, FF, FF, FF, FF, FF, FF, FF, FF, O, O, FF, FF, F, FF, O, F, O}, // I
         {O, C, D, FF, FF, FF, FF, O, FF, FF, O, FF, O, O, FF, FF, FF, FF, O, F, O},   // C
         {FF, FF, O, FF, FF, O, O, FF, O, F, O, O, O, O, O, O, F, O, O, O, O},         // B
         {FF, FF, O, FF, FF, O, O, FF, O, F, O, O, O, O, O, O, F, O, O, O, O},         // R
-        {FF, FF, O, FF, FF, O, O, FF, O, F, O, O, O, O, O, O, F, O, O, O, O},         // L
+        {FF, FF, O, FF, FF, O, O, FF, FF, F, O, O, O, O, O, O, F, O, O, O, O},         // L
         {O, O, O, O, O, O, O, O, O, F, O, O, O, O, O, O, O, O, O, O, O},              // G
         {O, D, O, FF, FF, FF, FF, O, FF, FF, O, O, O, O, FF, FF, FF, FF, O, FF, O}    // D
     };
@@ -81,7 +82,7 @@ private:
         {3, 9, 10, 11, 11, 11, 11, 3, 11, 11, 3, 11, 3, 3, 11, 11, 11, 11, 3, 11, 3}, // C
         {13, 13, 3, 13, 13, 3, 3, 13, 3, 12, 3, 3, 3, 3, 3, 3, 4, 3, 3, 3, 3},        // B
         {4, 4, 3, 4, 4, 3, 3, 4, 3, 18, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3},             // R
-        {4, 4, 3, 4, 4, 3, 3, 4, 3, 19, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3},             // L
+        {4, 4, 3, 4, 4, 3, 3, 4, 4, 19, 3, 3, 3, 3, 3, 3, 5, 3, 3, 3, 3},             // L
         {3, 3, 3, 3, 3, 3, 3, 3, 3, 15, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},             // G
         {3, 16, 3, 17, 17, 17, 17, 3, 17, 17, 3, 3, 3, 3, 17, 17, 17, 17, 3, 17, 3}   // D
     };

@@ -83,7 +83,7 @@ void Lexer::semantic_program(int num)
     case 11:
         type = INTEGER;
         //i -= 1;
-        result = int_num;
+        result = std::to_string(int_num);
         break; //
     case 12:
         type = EQUALS;
