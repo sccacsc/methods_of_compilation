@@ -9,7 +9,6 @@ Lexer::Lexer(std::string input) : input_text(input),
                                   result("") {};
 
 Lexer::~Lexer() = default;
-
 Token Lexer::get_next_token()
 {
     State state = S;
@@ -39,7 +38,7 @@ void Lexer::semantic_program(int num)
         break; //
     case 3:
         type = ERROR;
-        i += 1;
+        i = input_text.length();
         result = "Ошибка";
         break; //
     case 4:
@@ -58,7 +57,7 @@ void Lexer::semantic_program(int num)
         if (table_encoding.find(name) != table_encoding.end())
         {
             type = table_encoding.find(name)->second;
-            result = table_encoding.find(name)->second;
+            result = table_encoding.find(name)->first;
         }
         else
         {
@@ -88,12 +87,12 @@ void Lexer::semantic_program(int num)
     case 12:
         type = EQUALS;
         result = "==";
-        i += 1;
+        i += 1;//
         break; //
     case 13:
-        type = input_text[i];
-        result = input_text[i];
-        i -= 1;
+        type = input_text[i - 1];
+        result = input_text[i - 1];
+        //i -= 1;
         break; //
     case 14:
         i -= 1;
@@ -110,7 +109,7 @@ void Lexer::semantic_program(int num)
         break; //
     case 17:
         type = REAL;
-        i -= 1;
+        //i -= 1;
         result = real_num;
         break; //
     case 18:
@@ -125,7 +124,7 @@ void Lexer::semantic_program(int num)
         break; //
     case 20:
         type = END_OF_INPUT;
-        i += 1;
+        //i += 1;
         result = "конец";
         break; //
     }
@@ -133,10 +132,12 @@ void Lexer::semantic_program(int num)
 
 int Lexer::encode_char(char ch)
 {
-    if (ch >= 'A' && ch <= 'Z')
+    if ((ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z'))
         return 0; // «б»
     if (isdigit(ch))
         return 1; // «ц»
+    if (ch == '\n')
+        return 18;
     if (ch == '.')
         return 2; //
     if (ch == '+')
@@ -168,9 +169,7 @@ int Lexer::encode_char(char ch)
     if (isspace(ch))
         return 16; //
     if (ch == '!')
-        return 17; //
-    if (ch == '\n')
-        return 18; //
+        return 17; // //
     if (ch == ';')
         return 19; //
     if (ch == '\0')

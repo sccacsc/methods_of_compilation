@@ -4,13 +4,13 @@
 
 int main()
 {
-    Lexer lexer("1 > 2;1 < 2;");//временно
+    Lexer lexer("");//временно
     auto token = lexer.get_next_token();
-    while (token.type != 8 && token.type != -1)
-    {
+    while (true)
+ {
         if (token.type == -1)
         {
-            std::cout << "ошибка"                       << " | Line: " << token.line
+            std::cout << "ошибка"                       << " | Pos: " << token.line
                                                       << " | Column: " << token.column << std::endl;
             break;
         }
@@ -23,7 +23,7 @@ int main()
         {
             std::cout << "Token: " << token.value
                       << " | Type: " << token.type
-                      << " | Line: " << token.line
+                      << " | Pos: " << token.line
                       << " | Column: " << token.column << std::endl;
         }
         token = lexer.get_next_token();
