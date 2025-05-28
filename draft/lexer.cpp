@@ -1,4 +1,7 @@
 #include "lexer.h"
+#include <iostream>
+#include <stdexcept>
+
 
 Lexer::Lexer(std::string input) : input_text(input),
                                   i(0), j(0),
@@ -22,6 +25,38 @@ Token Lexer::get_next_token()
     }
 
     return {type, result, i, j};
+}
+
+std::vector<Token> Lexer::get_tokens(){
+    std::vector<Token> tokens;
+
+    auto token = get_next_token();
+
+    tokens.push_back(token);
+
+    while (true)
+    {
+        // ПРИ ОШИБКЕ ВЫВОДИТСЯ НЕ ТОТ POS!!!
+        if (token.type == -1)
+        {
+            throw std::runtime_error("Ошибка лексического анализа | Pos: " + std::to_string(token.line) +
+                                     " | Column: " + std::to_string(token.column));
+        }
+        else if (token.type == 8)
+        {
+            break;
+        }
+        else
+        {
+            std::cout << "Token: " << token.value
+                      << " | Type: " << token.type
+                      << " | Pos: " << token.line
+                      << " | Column: " << token.column << std::endl;
+        }
+        token = get_next_token();
+        tokens.push_back(token);
+    }
+    return tokens;
 }
 
 void Lexer::semantic_program(int num)

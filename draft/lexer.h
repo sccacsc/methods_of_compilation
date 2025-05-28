@@ -1,8 +1,8 @@
 #ifndef LEXER_H
 #define LEXER_H
 
-#include "token.h"
-#include <map>
+#include "utilities.h"
+#include <vector>
 
 class Lexer
 {
@@ -10,6 +10,7 @@ public:
     Lexer(std::string input);
     ~Lexer();
     Token get_next_token();
+    std::vector<Token> get_tokens();
 
 private:
     // передача номера семантической программы и её выполнение
@@ -23,20 +24,6 @@ private:
     std::string name;       // строка символов, либо имя
     std::string result;
 
-    // типы распознаной лексемы
-    enum Type
-    {
-        ERROR = -1,           // ошибка
-        NAME = 1,             // имя
-        INTEGER = 2,          // целое число
-        REAL = 3,             // вещественное число
-        EQUALS = 4,           // знак равенства ==
-        NOT_EQUALS = 5,       // знак сравнения !=
-        GREATER_OR_EQUAL = 6, // больше или равно >=
-        LESS_OR_EQUAL = 7,    // меньше или равно <=
-        END_OF_INPUT = 8
-
-    };
     int type = ERROR;
 
     // состояния
@@ -69,17 +56,7 @@ private:
         {O, O, O, O, O, O, O, O, O, F, O, O, O, O, O, O, O, O, O, O, O},              // G
         {O, D, O, FF, FF, FF, FF, O, FF, FF, O, O, O, O, FF, FF, FF, FF, O, FF, O}    // D
     };
-    // таблица служебных слов
-    const std::map<std::string, int> table_encoding = {
-        {"if", 100},
-        {"else", 101},
-        {"while", 102},
-        {"print", 103},
-        {"read", 104},
-        {"else", 105},
-        {"int", 106},
-        {"real", 107}
-    };
+
     // таблица семантических действий
     const int semantic_table[8][21] = {
         {1, 2, 3, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4, 4, 5, 5, 5, 4, 8, 4, 20},             // S
