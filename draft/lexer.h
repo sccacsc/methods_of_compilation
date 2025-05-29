@@ -24,7 +24,7 @@ private:
     std::string name;       // строка символов, либо имя
     std::string result;
 
-    int type = ERROR;
+    Type type = ERROR;
 
     // состояния
     enum State

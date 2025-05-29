@@ -77,7 +77,7 @@ void Lexer::semantic_program(int num)
         result = "Ошибка";
         break; //
     case 4:
-        type = input_text[i];
+        type = static_cast<Type>(input_text[i]);
         result = input_text[i];
         i += 1;
         break; //
@@ -91,7 +91,7 @@ void Lexer::semantic_program(int num)
     case 7:
         if (table_encoding.find(name) != table_encoding.end())
         {
-            type = table_encoding.find(name)->second;
+            type = static_cast<Type>(table_encoding.find(name)->second);
             result = table_encoding.find(name)->first;
         }
         else
@@ -120,12 +120,12 @@ void Lexer::semantic_program(int num)
         result = std::to_string(int_num);
         break; //
     case 12:
-        type = EQUALS;
+        type = EQUAL;
         result = "==";
         i += 1;//
         break; //
     case 13:
-        type = input_text[i - 1];
+        type = static_cast<Type>(input_text[i - 1]);
         result = input_text[i - 1];
         //i -= 1;
         break; //
@@ -160,7 +160,7 @@ void Lexer::semantic_program(int num)
     case 20:
         type = END_OF_INPUT;
         //i += 1;
-        result = "конец";
+        result = "";
         break; //
     }
 }

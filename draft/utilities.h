@@ -4,22 +4,13 @@
 #include <string>
 #include <map>
 
-struct Token
-{
-    int type;
-    std::string value;
-    int line;
-    int column;
-};
-
-
 // типы распознаной лексемы
 enum Type
 {
     ERROR = -1,           // ошибка
     NAME = 1,             // имя
-    INTEGER = 2,          // целое число
-    REAL = 3,             // вещественное число
+    INTEGER = 106,          // целое число
+    REAL = 107,             // вещественное число
     EQUAL = 4,           // знак равенства ==
     NOT_EQUALS = 5,       // знак сравнения !=
     GREATER_OR_EQUAL = 6, // больше или равно >=
@@ -76,6 +67,14 @@ enum Type
     END_OF_FILE,
 
 };*/
+
+struct Token
+{
+    Type type;
+    std::string value;
+    int line;
+    int column;
+};
 
 // таблица служебных слов
 const std::map<std::string, int> table_encoding = {

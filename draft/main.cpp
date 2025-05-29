@@ -1,7 +1,10 @@
 #include "lexer.h"
+#include "parser.h"
 
 int main()
 {
-    Lexer lex("n =       ;     10;");
-    lex.get_tokens();
+    Lexer lex("real n;");
+    //lex.get_tokens();
+    Parser par(lex.get_tokens());
+    par.parse();
 }

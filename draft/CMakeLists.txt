@@ -10,6 +10,7 @@ add_executable(draft main.cpp
     utilities.h
     lexer.cpp
     parser.h
+    parser.cpp
 
 
 
