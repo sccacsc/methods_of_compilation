@@ -44,6 +44,7 @@ std::vector<Token> Lexer::get_tokens(){
         }
         else if (token.type == 8)
         {
+            tokens.push_back(token);
             break;
         }
         else
@@ -58,7 +59,6 @@ std::vector<Token> Lexer::get_tokens(){
     }
     return tokens;
 }
-
 void Lexer::semantic_program(int num)
 {
     switch (num)
@@ -164,6 +164,114 @@ void Lexer::semantic_program(int num)
         break; //
     }
 }
+
+/*void Lexer::semantic_program(int num)
+{
+    switch (num)
+    {
+    case 1:
+        name = input_text[i];
+        i += 1;
+        break; //
+    case 2:
+        int_num = input_text[i] - '0';
+        i += 1;
+        break; //
+    case 3:
+        type = ERROR;
+        i = input_text.length();
+        result = "Ошибка";
+        break; //
+    case 4:
+        type = input_text[i];
+        result = input_text[i];
+        i += 1;
+        break; //
+    case 5:
+        i += 1;
+        break; //
+    case 6:
+        name += input_text[i];
+        i += 1;
+        break; //
+    case 7:
+        if (table_encoding.find(name) != table_encoding.end())
+        {
+            type = table_encoding.find(name)->second;
+            result = table_encoding.find(name)->first;
+        }
+        else
+        {
+            type = NAME;
+            result = name;
+        }
+        //i -= 1;
+        break; //
+    case 8:
+        i += 1;
+        j += 1;
+        break; //
+    case 9:
+        int_num = int_num * 10 + (input_text[i] - '0');
+        i += 1;
+        break; //
+    case 10:
+        real_num = int_num;
+        i += 1;
+        decimal_count = 10;
+        break; //
+    case 11:
+        type = INTEGER;
+        //i -= 1;
+        result = std::to_string(int_num);
+        break; //
+    case 12:
+        type = EQUALS;
+        result = "==";
+        i += 1;//
+        break; //
+    case 13:
+        type = input_text[i - 1];
+        result = input_text[i - 1];
+        //i -= 1;
+        break; //
+    case 14:
+        i -= 1;
+        break; //
+    case 15:
+        type = NOT_EQUALS;
+        result = "!=";
+        i += 1;
+        break; //
+    case 16:
+        real_num += (input_text[i] - '0') / decimal_count;
+        decimal_count *= 10;
+        i += 1;
+        break; //
+    case 17:
+        type = REAL;
+        //i -= 1;
+        result = real_num;
+        break; //
+    case 18:
+        type = GREATER_OR_EQUAL;
+        i += 1;
+        result = ">=";
+        break; //
+    case 19:
+        type = LESS_OR_EQUAL;
+        i += 1;
+        result = "<=";
+        break; //
+    case 20:
+        type = END_OF_INPUT;
+        //i += 1;
+        result = "конец";
+        break; //
+    }
+}*/
+
+
 
 int Lexer::encode_char(char ch)
 {
