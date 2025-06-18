@@ -3,18 +3,18 @@
 
 #include <string>
 #include <map>
-
-// типы распознаной лексемы
+#include <iostream>
+// ГІГЁГЇГ» Г°Г Г±ГЇГ®Г§Г­Г Г­Г®Г© Г«ГҐГЄГ±ГҐГ¬Г»
 enum Type
 {
-    ERROR = -1,           // ошибка
-    NAME = 1,             // имя
-    INTEGER = 106,          // целое число
-    REAL = 107,             // вещественное число
-    EQUAL = 4,           // знак равенства ==
-    NOT_EQUALS = 5,       // знак сравнения !=
-    GREATER_OR_EQUAL = 6, // больше или равно >=
-    LESS_OR_EQUAL = 7,    // меньше или равно <=
+    ERROR = -1,           // Г®ГёГЁГЎГЄГ
+    NAME = 1,             // ГЁГ¬Гї
+    INTEGER = 106,          // Г¶ГҐГ«Г®ГҐ Г·ГЁГ±Г«Г®
+    REAL = 107,             // ГўГҐГ№ГҐГ±ГІГўГҐГ­Г­Г®ГҐ Г·ГЁГ±Г«Г®
+    EQUAL = 4,           // Г§Г­Г ГЄ Г°Г ГўГҐГ­Г±ГІГўГ  ==
+    NOT_EQUALS = 5,       // Г§Г­Г ГЄ Г±Г°Г ГўГ­ГҐГ­ГЁГї !=
+    GREATER_OR_EQUAL = 6, // ГЎГ®Г«ГјГёГҐ ГЁГ«ГЁ Г°Г ГўГ­Г® >=
+    LESS_OR_EQUAL = 7,    // Г¬ГҐГ­ГјГёГҐ ГЁГ«ГЁ Г°Г ГўГ­Г® <=
     END_OF_INPUT = 8, // \0
     PLUS = '+', //43
     MINUS = '-', //45
@@ -35,6 +35,7 @@ enum Type
     LBRACE = '{',      // {
     RBRACE = '}',      // }
     SEMICOLON = ';',
+    INT = 108,
 
 };
 
@@ -72,20 +73,23 @@ struct Token
 {
     Type type;
     std::string value;
+    int pos;
     int line;
-    int column;
 };
 
-// таблица служебных слов
+// ГІГ ГЎГ«ГЁГ¶Г  Г±Г«ГіГ¦ГҐГЎГ­Г»Гµ Г±Г«Г®Гў
 const std::map<std::string, int> table_encoding = {
     {"if", 100},
-    {"else", 101},
+    {"else", 105},
     {"while", 102},
     {"print", 103},
     {"read", 104},
     {"else", 105},
-    {"int", 106},
-    {"real", 107}
+    {"int", 108},
+    {"real", 109}
 };
+
+void error_output(Token token);
+
 
 #endif // UTILITIES_H

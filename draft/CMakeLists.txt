@@ -11,9 +11,7 @@ add_executable(draft main.cpp
     lexer.cpp
     parser.h
     parser.cpp
-
-
-
+    utilities.cpp
 )
 
 include(GNUInstallDirs)
